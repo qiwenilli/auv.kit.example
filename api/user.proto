@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+// user api
+package user.api;
+
+/* option go_package = "github.com/qiwenilli/auv.kit/example/api;api"; */
+option go_package = "api";
+
+message Reg{
+    message Request {
+        string name = 1;
+        string phone = 2;
+        string pwd = 3;
+        string email = 4;
+    }
+    message Response {
+        string msg = 1;
+    }
+}
+
+message Login{
+    message Request {
+        string name = 1;
+        string phone = 2;
+        string pwd = 3;
+    }
+    message Response {
+        string msg = 1;
+    }
+}
+
+service User {
+
+    // 用户注册
+    rpc Reg(Reg.Request) returns (Reg.Response);
+    
+    // 用户登录
+    rpc Login(Login.Request) returns (Login.Response);
+}
+
+

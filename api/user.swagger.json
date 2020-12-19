@@ -1,0 +1,122 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "user api",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/twirp/user.api.User/Login": {
+      "post": {
+        "summary": "用户登录",
+        "operationId": "Login",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiLoginResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apiLoginRequest"
+            }
+          }
+        ],
+        "tags": [
+          "User"
+        ]
+      }
+    },
+    "/twirp/user.api.User/Reg": {
+      "post": {
+        "summary": "用户注册",
+        "operationId": "Reg",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiRegResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apiRegRequest"
+            }
+          }
+        ],
+        "tags": [
+          "User"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "apiLoginRequest": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "pwd": {
+          "type": "string"
+        }
+      }
+    },
+    "apiLoginResponse": {
+      "type": "object",
+      "properties": {
+        "msg": {
+          "type": "string"
+        }
+      }
+    },
+    "apiRegRequest": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "pwd": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        }
+      }
+    },
+    "apiRegResponse": {
+      "type": "object",
+      "properties": {
+        "msg": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

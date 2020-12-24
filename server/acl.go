@@ -1,10 +1,3 @@
-/**
- * File              : acl.go
- * Author            : qiwen <yangdongyong@qianxin.com>
- * Date              : 24.12.2020
- * Last Modified Date: 24.12.2020
- * Last Modified By  : qiwen <yangdongyong@qianxin.com>
- */
 package server
 
 import (

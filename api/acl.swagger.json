@@ -1,0 +1,67 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "acl.proto",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/twirp/acl.Acl/List": {
+      "post": {
+        "summary": "列表",
+        "operationId": "List",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ListResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ListRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Acl"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "ListRequest": {
+      "type": "object",
+      "properties": {
+        "assets_id": {
+          "type": "string"
+        }
+      }
+    },
+    "ListResponse": {
+      "type": "object",
+      "properties": {
+        "assets_list": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

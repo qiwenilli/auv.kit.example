@@ -1,0 +1,28 @@
+// File              : acl.proto
+// Author            : qiwen <yangdongyong@qianxin.com>
+// Date              : 24.12.2020
+// Last Modified Date: 24.12.2020
+// Last Modified By  : qiwen <yangdongyong@qianxin.com>
+syntax = "proto3";
+
+package acl;
+
+option go_package = "api/acl;acl";
+
+message List{
+    message Request {
+        string assets_id = 1;
+    }
+    message Response {
+        repeated string assets_list = 1;
+    }
+}
+
+service Acl {
+
+    // 列表
+    rpc List(List.Request) returns (List.Response);
+    
+}
+
+

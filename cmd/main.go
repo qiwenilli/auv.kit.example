@@ -1,3 +1,10 @@
+/**
+ * File              : main.go
+ * Author            : qiwen <yangdongyong@qianxin.com>
+ * Date              : 24.12.2020
+ * Last Modified Date: 24.12.2020
+ * Last Modified By  : qiwen <yangdongyong@qianxin.com>
+ */
 package main
 
 import (
@@ -6,7 +13,9 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/qiwenilli/auv.kit.example/api"
+	aclapi "github.com/qiwenilli/auv.kit.example/api/acl"
+	userapi "github.com/qiwenilli/auv.kit.example/api/user"
+
 	business "github.com/qiwenilli/auv.kit.example/server"
 
 	// "github.com/qiwenilli/auv.kit"
@@ -19,7 +28,10 @@ func main() {
 	// 通过twirp框架生成服务定义
 	// api
 	user := &business.User{}
-	srv1 := api.NewUserServer(user)
+	srv1 := userapi.NewUserServer(user)
+
+	acl := &business.Acl{}
+	srv2 := aclapi.NewAclServer(acl)
 
 	var opts []server.Opt
 	opts = append(opts, server.WithServiceName("auv.mobi"))
@@ -27,7 +39,7 @@ func main() {
 	// opts = append(opts, server.WithMiddlewares(customeMiddleware))
 	opts = append(opts, server.WithRatelimit(2))
 	opts = append(opts, server.WithIpWhiteList([]string{"192.168.*.*"}))
-	opts = append(opts, server.WithServices(srv1))
+	opts = append(opts, server.WithServices(srv1, srv2))
 
 	// curl -X POST -H 'Content-Type: application/json' 'http://192.168.177.132:8080/twirp/user.api.User/Login' -d '{}'
 	// curl -X POST -H 'Content-Type: application/json' 'http://192.168.177.132:8080/twirp/user.api.User/Reg' -d '{}'
@@ -42,10 +54,10 @@ func main() {
 			addr := discovery.GetServerWithName("auv.mobi")
 			fmt.Println(addr)
 
-			cli := api.NewUserJSONClient("http://"+addr, &http.Client{})
+			cli := userapi.NewUserJSONClient("http://"+addr, &http.Client{})
 			//
 			ctx := context.Background()
-			resp, err := cli.Login(ctx, &api.Login_Request{Name: "qiwen", Phone: "130"})
+			resp, err := cli.Login(ctx, &userapi.Login_Request{Name: "qiwen", Phone: "130"})
 			fmt.Println(resp, err)
 
 		}

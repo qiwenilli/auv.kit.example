@@ -15,7 +15,7 @@
     "application/json"
   ],
   "paths": {
-    "/twirp/user.api.User/Login": {
+    "/twirp/user.User/Login": {
       "post": {
         "summary": "用户登录",
         "operationId": "Login",
@@ -23,7 +23,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/apiLoginResponse"
+              "$ref": "#/definitions/userLoginResponse"
             }
           }
         },
@@ -33,7 +33,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/apiLoginRequest"
+              "$ref": "#/definitions/userLoginRequest"
             }
           }
         ],
@@ -42,7 +42,7 @@
         ]
       }
     },
-    "/twirp/user.api.User/Reg": {
+    "/twirp/user.User/Reg": {
       "post": {
         "summary": "用户注册",
         "operationId": "Reg",
@@ -50,7 +50,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/apiRegResponse"
+              "$ref": "#/definitions/userRegResponse"
             }
           }
         },
@@ -60,7 +60,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/apiRegRequest"
+              "$ref": "#/definitions/userRegRequest"
             }
           }
         ],
@@ -71,7 +71,7 @@
     }
   },
   "definitions": {
-    "apiLoginRequest": {
+    "userLoginRequest": {
       "type": "object",
       "properties": {
         "name": {
@@ -85,7 +85,7 @@
         }
       }
     },
-    "apiLoginResponse": {
+    "userLoginResponse": {
       "type": "object",
       "properties": {
         "msg": {
@@ -93,7 +93,7 @@
         }
       }
     },
-    "apiRegRequest": {
+    "userRegRequest": {
       "type": "object",
       "properties": {
         "name": {
@@ -110,7 +110,7 @@
         }
       }
     },
-    "apiRegResponse": {
+    "userRegResponse": {
       "type": "object",
       "properties": {
         "msg": {

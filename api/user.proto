@@ -1,10 +1,14 @@
+// File              : user.proto
+// Author            : qiwen <yangdongyong@qianxin.com>
+// Date              : 24.12.2020
+// Last Modified Date: 24.12.2020
+// Last Modified By  : qiwen <yangdongyong@qianxin.com>
 syntax = "proto3";
 
 // user api
-package user.api;
+package user;
 
-/* option go_package = "github.com/qiwenilli/auv.kit/example/api;api"; */
-option go_package = "api";
+option go_package = "api/user;user";
 
 message Reg{
     message Request {
